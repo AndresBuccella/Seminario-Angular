@@ -1,1 +1,20 @@
-thead
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Nombre</th>
+            <th>Desc</th>
+            <th>Precio</th>
+            <th>AddToCart</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pc of pcs" [ngClass]="{'clearance': pc.clearance}"> <!--se llama directiva-->
+            <td><img [src]="pc.img" [alt]="pc.img"></td>
+            <td>{{pc.nombre}}</td>
+            <td>{{pc.desc}}</td>
+            <td>{{pc.precio | currency}}</td> <!--PIPE se pueden concatenar-->
+            <td><span *ngIf="pc.stock != 0">{{pc.addToCart}}</span></td>
+        </tr>
+    </tbody>
+</table>
